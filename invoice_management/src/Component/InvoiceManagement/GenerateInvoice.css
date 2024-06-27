@@ -1,0 +1,180 @@
+/* GenerateInvoice.css */
+
+/* Container styles */
+.invoice-container10 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 900px;
+    margin: 20px auto; /* Center the container with some space around it */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff; /* White background */
+  }
+  
+  /* Header styles */
+  .invoice-header11 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Table styles */
+  .invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .invoice-table th,
+  .invoice-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .invoice-table th {
+    background-color: #f2f2f2;
+    font-weight: bold; /* Make header cells bold */
+  }
+  
+ /* Additional styling for the total amount textbox */
+.total-amount-value {
+    font-size: 24px; /* Larger font size */
+    font-weight: bold;
+    color: #035f06;
+    border: none;
+    background: transparent;
+    width: auto;
+    text-align: right;
+    padding: 0;
+    outline: none; /* Remove the outline when focused */
+    transition: color 0.3s ease, font-size 0.3s ease; /* Smooth transition effects */
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.total-amount-value:focus {
+    color: #007bff; /* Change text color on focus */
+}
+
+.total-amount-value::placeholder {
+    color: #ccc; /* Placeholder text color */
+    opacity: 0.7; /* Placeholder opacity */
+}
+ 
+  
+  /* Button container styles */
+  .button-container {
+    text-align: center; /* Center the buttons */
+    margin-top: 20px;
+  }
+  
+  .button-container button {
+    margin: 0 10px; /* Add some horizontal margin */
+    padding: 12px 24px; /* Increase padding */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* Adjust font size */
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Generate Invoice button styles */
+  .GenerateInvoice {
+    text-align:left;
+    margin-top: 20px;
+    margin-right: auto;
+  }
+
+.Invoice{
+    text-align: right;
+    font-size: 14px;
+}
+.Date{
+    text-align: right;
+    font-size: 14px;
+}
+
+.InvoiceItem{
+    text-align: center;
+}
+
+.TH{
+    font-size: 13px;
+}
+
+.invoice-header h2 {
+    color: #333;
+}
+
+.invoice-details {
+    margin-top: 20px;
+}
+
+.invoice-details table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.invoice-details th, .invoice-details td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.invoice-details th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.total-amount-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: right;
+}
+
+.total-amount-title {
+    margin-bottom: 10px;
+    color: #333;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.total-amount-value {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.button-container {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.button-container button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-container button:hover {
+    background-color: #0056b3;
+}
+
+.delivery-charge{
+    font-size: 13px;
+}
+
+.subtotal{
+    font-size: 13px;
+}

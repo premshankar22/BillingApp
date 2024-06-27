@@ -1,0 +1,213 @@
+.sales-report {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.header {
+    grid-column: span 2;
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+.block {
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+.payment-types, .category-sales {
+    grid-column: span 2;
+}
+
+.header {
+    background-color: #f0f0f0; /* Light gray background */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Add some padding */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    margin-bottom: 20px; /* Add some space below the header */
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Align items with space between */
+    align-items: center; /* Center items vertically */
+    width: 100%;
+  }
+  
+  .header p {
+    margin: 0; /* Remove default paragraph margin */
+    font-size: 16px; /* Increase font size */
+    font-weight: 500; /* Add some boldness to the text */
+    color: #333; /* Dark text color */
+  }
+  
+  .header svg {
+    margin-right: 10px; /* Add some space to the right of icons */
+    fill: #007bff; /* Blue color for icons */
+  }
+  
+  .header svg:hover {
+    fill: #0056b3; /* Darker blue on hover */
+  }
+
+  .sales-report-container {
+    width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/***************/
+.option-box {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    width: 25%;
+    text-transform: capitalize;
+
+}
+
+.option-box:hover {
+    transform: translateY(-5px);
+}
+
+.option-box p {
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.option-box svg {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    fill: #4caf50; /* Change the color of the icon */
+}
+
+.block {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    background-color: #f0f0f0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    width:auto;
+   /* justify-self:left; */
+
+    position: absolute;
+    top: 950px; /* Adjust as needed */
+    left: 10px; /* Adjust as needed */
+   /* width: 200px; /* Adjust width as needed */
+   /* height: 200px; /* Adjust height as needed */  
+}
+
+.block-header {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.block-content {
+    padding-top: 10px;
+}
+
+.block h3 {
+    color: #333;
+}
+
+.block p {
+    margin: 5px 0;
+}
+
+.AAA{
+    font-size: 18px;
+    font-weight: bold;
+   
+}
+
+.payment-types li {
+    list-style: none;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  
+  .circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    font-size: 14px;
+    color: #333;
+  }
+  .payment-types ul {
+    padding: 0;
+  }
+  
+  .payment-types{
+    position: absolute;
+    top: 630px; /* Adjust as needed */
+    left: 10px; 
+    width: auto;
+    background-color: #f0f0f0;
+    left: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+
+  }
+
+  .category-sales{
+    position: absolute;
+    top: 780px; /* Adjust as needed */
+    right: 10px;
+    
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    background-color: #f0f0f0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    width:auto;
+    
+  }
+
+  .block4{
+    position: absolute;
+    top : 800px;
+    right: 20px;
+  }
+
+  .block1{
+    position: absolute;
+    top : 620px;
+    right : 10px;
+
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    background-color: #f0f0f0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    width:auto;
+    text-align: center;
+  }
+
+  .block3 {
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding-left: 270px; /* Adjust this value to center the chart */
+}
+
+  

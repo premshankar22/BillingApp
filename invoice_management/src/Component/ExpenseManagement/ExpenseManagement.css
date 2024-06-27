@@ -1,0 +1,33 @@
+.expense-management {
+    max-width:fit-content;
+    margin: 0 auto;
+    padding: 20px;
+    left: auto;
+    justify-self:left;
+  }
+  
+  .title {
+    text-align: center;
+  }
+  
+  .search-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .add-expense-modal {
+    width: 400px;
+    max-width: 100%;
+  }
+  
+  .export-buttons {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .Expenses{
+    justify-self:auto;
+  }
+  

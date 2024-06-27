@@ -1,0 +1,456 @@
+/* Invoice Management Container */
+.invoice-management-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Header */
+.header {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.search-container {
+  justify-self: start; /* Align to the left within Block 1 */
+  width: 900px; /* Span the entire width */
+}
+
+/* Search Input */
+.input-field {
+  width: 30%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  transition: border-color 0.3s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #5c9ded;
+}
+
+
+.search-results li:hover {
+  background-color: #f5f5f5;
+}
+
+
+.search-buttons button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  background-color: #5c9ded;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-buttons button:hover {
+  background-color: #4a86d6;
+}
+
+
+/* Additional Section */
+.additional-section {
+  margin-top: 30px;
+  /* Styles for additional charges and shopping bag... */
+}
+
+
+.ordered-product-list-section {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ordered-product-list-section th, .ordered-product-list-section td {
+  border: 1px solid #e0e0e0;
+  padding: 12px;
+  text-align: left;
+}
+
+.ordered-product-list-section th {
+  background-color: #f2f2f2;
+  color: #333;
+  font-weight: bold;
+}
+
+.ordered-product-list-section td {
+  background-color: #fff;
+  color: #555;
+}
+
+/* Hover effect */
+.ordered-product-list-section tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* Button styles */
+.ordered-product-list-section button {
+  padding: 8px 12px;
+  border: none;
+  background-color: #fe2a2a;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 12px;
+}
+ .ordered-product-list-section[type="text"],
+ .ordered-product-list-section[type="number"]{
+  font-size: 12px;
+
+ }
+
+
+.ordered-product-list-section button:hover {
+  background-color: #e50606;
+}
+
+/* Form */
+.InputField {
+  margin-bottom: 20px;
+}
+
+/* Labels */
+.InputField label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Input Fields */
+.InputField input[type="text"],
+.InputField input[type="number"],
+.InputField select {
+  width: 500px;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 12px;
+  color: #555;
+  transition: border-color 0.3s ease;
+  text-align:left;
+}
+
+/* Apply Coupon and Add Invoice Buttons */
+.InputField button {
+  padding: 10px 10px;
+  margin-right: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+
+/* Additional Charges Section */
+.AdditionalCharges {
+  margin-top: 30px;
+}
+
+/* Input and Button for Shopping Bag */
+.ShoppingBagInput {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.ShoppingBagInput input[type="number"] {
+  width: 100px;
+  padding: 12px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #555;
+}
+
+.ShoppingBagInput button {
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ShoppingBagInput button:hover {
+  background-color: #0056b3;
+}
+
+.InvoiceManagement{
+  width: auto;
+  margin: 100px;
+  padding: 5px;
+}
+
+.Header{
+  text-align: center;
+  font-size:xx-large;
+  font-family :'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: bold;
+}
+
+.InvoiceForm{
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.InvoiceManagement {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two columns with equal width */
+  grid-template-rows: auto 1fr auto;
+  gap: 20px;
+  justify-items: center; /* Center items horizontally */
+}
+
+.Block1 {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(102, 97, 97, 0.1);
+  width: 650px;
+  justify-self: start;
+}
+
+.Block2 {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(39, 33, 33, 0.1);
+  width: 650px;
+  justify-self:end;
+}
+
+.Block3 {
+  grid-column: span 2; /* Span across both columns */
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(59, 47, 47, 0.1);
+  width: 1250px;
+}
+
+.faTimes{
+  margin-right: 100%;
+}
+
+.search-container {
+  position: relative;
+  justify-self: start;
+  width: 900px;
+}
+
+.search-results-container {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  width: 100%;
+  max-height: 200px; /* Adjust as needed */
+  overflow-y: auto;
+}
+
+.search-results {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.button-container {
+  display: flex;
+  align-items: center; /* Align buttons vertically */
+}
+
+/* Adjust margin between buttons */
+.button-container Button {
+  margin-right: 10px;
+}
+
+
+.InvoiceManagement {
+  max-width: 100%; /* Set maximum width to prevent overflow */
+  overflow-x: hidden; /* Hide horizontal overflow */
+}
+
+.TH{
+  font-size: 13px;
+}
+
+
+.Block1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filter-container label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.filter-container select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  appearance: none;
+  background-color: #fff;
+  color: #333;
+}
+
+.filter-container button {
+  margin-left: 10px;
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.filter-container button:hover {
+  background-color: #0056b3;
+}
+
+ .ButtonGenerateInvoice{
+  color: #ffffff;
+  background-color: #9f9a9a;
+ 
+ }
+ .ButtonGenerateInvoice:hover{
+  background-color: #585858;
+  transform: scale(1.08);
+ }
+
+ .RemoveButton{
+  color: #ffffff;
+  background-color: #ff2c2c;
+ }
+ .RemoveButton:hover{
+  background-color: crimson;
+  transform: scale(1.08);
+ }
+
+ Scrollable Table Container 
+.scrollable-table {
+  max-height: 300px; /* Adjust the max-height as needed */
+  overflow-y: auto; /* Enable vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+/* Scrollbar Track */
+.scrollable-table::-webkit-scrollbar-track {
+  background-color: #f5f5f5; /* Light gray */
+}
+
+/* Scrollbar Handle */
+.scrollable-table::-webkit-scrollbar-thumb {
+  background-color: #aaa; /* Light gray */
+  border-radius: 10px;
+}
+
+/* Scrollbar Handle on hover */
+.scrollable-table::-webkit-scrollbar-thumb:hover {
+  background-color: #888; /* Dark gray */
+}
+
+.scrollable-table::-webkit-scrollbar-button {
+  display: none; /* Hide scrollbar buttons */
+}
+
+
+.scrollable-table::-webkit-scrollbar-corner {
+  background-color: transparent; /* Transparent */
+}
+.invoice-management {
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.select-container {
+  width: 200px;
+}
+
+.time-period-select {
+  padding: 5px 7px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.table-container5 {
+  overflow-x:auto;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.invoice-header {
+  background-color: #f2f2f2;
+  padding: 12px 20px;
+  text-align: left;
+  font-size: 16px;
+}
+
+.invoice-row {
+  background-color: #fff;
+}
+
+.invoice-data {
+  padding: 12px 15px;
+  font-size: 14px;
+}
+
+.invoice-row:hover {
+  background-color: #f2f2f2;
+}
+
+.table-container5 {
+  overflow-x:auto;
+  max-height: 600px; /* Set the maximum height for the table container */
+}

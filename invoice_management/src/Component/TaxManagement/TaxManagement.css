@@ -1,0 +1,219 @@
+/* TaxManagement.css */
+
+.confirmation-dialog {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.confirmation-dialog p {
+    margin-bottom: 10px;
+}
+
+.confirmation-dialog button {
+    margin-right: 10px;
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
+}
+.loading {
+    margin-top: 10px;
+}
+
+/* TaxManagement.css */
+
+/* Container styles */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Heading styles */
+  h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Form styles */
+  .form-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .label {
+    font-weight: bold;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  /* Button styles */
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Table styles */
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .table th, .table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .table th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  
+  /* Animation */
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .slideIn {
+    animation: slideIn 0.5s ease;
+  }
+  .scrollable-cell {
+    max-width: 200px; /* Adjust the maximum width as needed */
+    overflow: auto;
+  }
+
+  .low-stock-alert {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    background-color: #f8ded7dc;
+    border: 1px solid #000000;
+    color: #ff011a;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-bottom: 8px;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+    font-weight: 900;
+  }
+  
+  .low-stock-alert.show {
+    opacity: 11;
+  }
+  
+  .low-stock-alert span {
+    margin-left: 8px;
+  }
+  
+  .low-stock-alert .icon {
+    color: #ff0019;
+  }
+  .Indicator{
+    color: #760101;
+  }
+
+  .Delete{
+
+    background-color: #bf2424;
+    color: #fffbfb;
+    cursor: pointer;
+    border-radius: 8px;
+   
+  }
+
+  .Delete:hover{
+    background-color: #ad0000;
+    transform: scale(1.08);
+  }
+
+  .Edit{
+    background-color: #007bff;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+
+  .Edit:hover{
+    background-color: #004690;
+    transform: scale(1.08);
+  }
+
+  .Refresh{
+    background-color: #005dc0;
+    color: #f2f2f2;
+    cursor: pointer;
+    border-radius: 8px;
+
+  }
+
+  .Refresh:hover{
+    background-color: #004792;
+    transform: scale(1.08);
+
+  }
+
+  .AddProduct{
+    background-color: rgb(37, 179, 49);
+    color: #f9f9f9;
+    cursor: pointer;
+    border-radius: 8px;
+
+  }
+
+  .AddProduct:hover{
+    background-color: forestgreen;
+    transform: scale(1.08);
+
+  }
+
+  .SearchButton{
+    background-color: #0167d4;
+    color: #f2f2f2;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  .SearchButton:hover{
+    background-color: #014c9d;
+    transform: scale(1.08);
+  }
+
+  .Hero{
+    padding: 20px;
+  }
