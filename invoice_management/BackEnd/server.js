@@ -3,8 +3,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mysql = require('mysql2/promise');
 
-
-
 const app = express();
 
 // Middleware
@@ -15,14 +13,21 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-// MySQL Connection
+/* MySQL Connection
 const connection = mysql.createPool({
     connectionLimit: 10,
     host: 'localhost',
     user: 'prem',
     password: '12345678910',
     database: 'INVOICE_MANAGEMENT'
-});
+}); */
+
+const connection = mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+  });
 
 // Connect to MySQL
 connection.getConnection((err, conn) => {
@@ -34,32 +39,7 @@ connection.getConnection((err, conn) => {
     conn.release(); // Release the connection
 });
 
-
 // Define Routes
-/*app.post('/login', async (req, res) => {
-    const { username, password } = req.body;
-    try {
-        // Perform authentication logic with database
-        connection.query('SELECT * FROM users WHERE username = ? AND password = ?', [username, password], (error, results, fields) => {
-            if (error) {
-                console.error('Error during login:', error);
-                return res.status(500).json({ error: 'Internal server error' });
-            }
-            if (results.length === 0) {
-                return res.status(401).json({ error: 'Invalid username or password' });
-            }
-            // If authentication is successful, return success message
-            res.status(200).json({ message: 'Login successful' });
-        });
-    } catch (error) {
-        console.error('Error during login:', error);
-        res.status(500).json({ error: 'Internal server error' });
-    }
-});   */
-
-
-
-
 // Endpoint to handle POST requests to add a new product
 app.post('/products', (req, res) => {
     const {id, name, price, quantity, category, gstRate, date, discountType, discountValue } = req.body;
@@ -274,8 +254,8 @@ app.post('/invoices', async (req, res) => {
 
         // Insert product details into another table (assuming you have a separate table for products)
         for (const product of products) {
-            await connection.query('INSERT INTO invoice_products (invoiceNumber, productId, productName, category, quantity, price, discountType, discountValue, gst, couponCode, totalAmountPerProduct) VALUES (?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?)',
-                [invoiceNumber, product.productId, product.productName, product.category, product.quantity, product.price, product.discountType, product.discountValue, product.gst, product.couponCode, product.totalAmountPerProduct]);
+            await connection.query('INSERT INTO invoice_products (invoiceNumber, productId, productName, quantity, price, discountType, discountValue, gst, couponCode, totalAmountPerProduct) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                [invoiceNumber, product.productId, product.productName, product.quantity, product.price, product.discountType, product.discountValue, product.gst, product.couponCode, product.totalAmountPerProduct]);
         }
 
         res.status(201).json({ message: 'Invoice data saved successfully.' });
@@ -314,137 +294,9 @@ app.get('/invoices/:invoiceNumber/products', async (req, res) => {
     }
   });
 
-
-
-//********************** SALESREPORT****************** */
-
-// Route to fetch and process sales data
-app.get('/sales-report', async (req, res) => {
-    const searchQuery = req.query.search || '';
-
-    try {
-        //********************************* // Fetch total sales revenue* */
-        const [totalSalesResult] = await connection.query(
-            'SELECT SUM(totalAmountOCP) AS totalSales FROM invoices'
-        );
-        const totalSales = totalSalesResult[0].totalSales;
-
-        ///******************* // Fetch total cost of goods sold (COGS) */
-        const [totalCostResult] = await connection.query(
-            'SELECT IFNULL(SUM(amount), 0) AS totalCost FROM expenses'
-        );
-        const totalCost = totalCostResult[0].totalCost;
-
-        let profit = 0;
-        let loss = 0;
-
-        const profitOrLoss = totalSales - totalCost;
-
-        if (profitOrLoss >= 0) {
-            profit = profitOrLoss;
-        } else {
-            loss = Math.abs(profitOrLoss);
-        }
-
-        const profitPercentage = totalSales !== 0 ? ((profit / totalSales) * 100).toFixed(2) : 0;
-        const lossPercentage = totalSales !== 0 ? ((loss / totalSales) * 100).toFixed(2) : 0;
-
-        // Fetch other sales report data**************
-
-        const [paymentTypes] = await connection.query('SELECT paymentMethod, COUNT(*) AS quantity FROM invoices GROUP BY paymentMethod');
-        const totalInvoices = paymentTypes.reduce((acc, curr) => acc + curr.quantity, 0);
-        const paymentTypesWithPercentage = paymentTypes.map(type => ({
-            paymentMethod: type.paymentMethod,
-            quantity: type.quantity,
-            percentage: (type.quantity / totalInvoices) * 100
-        }));
-        const [subTotal] = await connection.query('SELECT SUM(subtotal) AS subTotal FROM invoices');
-
-
-        // Fetch top selling product 
-        const [topSellingProduct] = await connection.query(
-            'SELECT IFNULL(productName, "N/A") AS productName, IFNULL(SUM(quantity), 0) AS quantity FROM invoice_products GROUP BY productName ORDER BY quantity DESC LIMIT 5'
-        );
-       const [totalDeliveryProfit] = await connection.query('SELECT SUM( deliveryCharge) AS totalDeliveryProfit FROM invoices');
-
-       // Add queries to calculate total shopping bag quantity and profit from invoices table
-       const [totalShoppingBagQuantity] = await connection.query('SELECT SUM(shoppingBagQuantity) AS totalShoppingBagQuantity FROM invoices');
-       const [totalShoppingBagProfit] = await connection.query('SELECT SUM( shoppingBagPricePerItem) AS totalShoppingBagProfit FROM invoices');
-       // Query to get total GST of all products
-       const [totalGSTResult] = await connection.query('SELECT SUM(gst) AS totalGST FROM invoice_products INNER JOIN invoices ON invoice_products.invoiceNumber = invoices.invoiceNumber');
-        const totalGST = totalGSTResult[0].totalGST || 0; // handle case when no GST is found
-
-        // Fetch category sales data
-        const [categorySales] = await connection.query('SELECT category, SUM(quantity) AS totalQuantity FROM invoice_products GROUP BY category');
-
-        const [salesData] = await connection.query('SELECT i.*, p.productName FROM invoices i INNER JOIN invoice_products p ON i.invoiceNumber = p.invoiceNumber WHERE p.productName LIKE ?', [`%${searchQuery}%`]);
-
-        // Fetch daily sales data
-        const [dailySales] = await connection.query(
-            'SELECT DATE(date) AS date, SUM(totalAmountOCP) AS totalSales FROM invoices GROUP BY DATE(date)'
-        );
-
-         // Retrieve filter parameters from request query
-          const { startDate, endDate, category } = req.query;
-
-        // Retrieve sorting parameters from request query
-        const { sortBy, order } = req.query;
-
-         // Apply filters to sales data
-        let filteredSalesData = salesData;
-
-        if (startDate && endDate) {
-             filteredSalesData = filteredSalesData.filter(sale => sale.date >= startDate && sale.date <= endDate);
-        }
-
-        if (category) {
-        filteredSalesData = filteredSalesData.filter(sale => sale.category === category);
-        }
-
-        // Apply sorting to sales data
-       if (sortBy && ['date', 'totalSales', 'category'].includes(sortBy)) {
-        filteredSalesData.sort((a, b) => {
-            if (order === 'desc') {
-                return b[sortBy] - a[sortBy];
-            } else {
-                return a[sortBy] - b[sortBy];
-            }
-        });
-     }
-
-
-        res.json({
-            totalSales: totalSales,
-            salesData: salesData,
-            paymentTypes: paymentTypesWithPercentage,
-            subTotal: subTotal[0].subTotal,
-            topSellingProduct: topSellingProduct[0],
-            categorySales : categorySales,
-            totalCost: totalCost,
-            profit: profit,
-            loss: loss,
-            profitPercentage: profitPercentage,
-            lossPercentage: lossPercentage,
-            totalDeliveryProfit: totalDeliveryProfit[0].totalDeliveryProfit,
-            totalShoppingBagQuantity: totalShoppingBagQuantity[0].totalShoppingBagQuantity,
-            totalShoppingBagProfit: totalShoppingBagProfit[0].totalShoppingBagProfit,
-            totalGST: totalGST,
-            dailySales: dailySales,
-            filteredSalesData: filteredSalesData
-      
-        });
-    } catch (error) {
-        console.error('Error fetching sales report:', error);
-        res.status(500).json({ error: 'Internal server error' });
-    }
-});
-
-
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
-
-
 
